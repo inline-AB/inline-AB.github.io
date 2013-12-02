@@ -170,8 +170,9 @@
       // Attach click listener to every goal trigger and send goal event to GA on click
       for (var i = 0; i < goalActions.length; i++){
         addListener(goalTarget, goalActions[i], function(action){
-          var action = action;
-          return function() { ga('send', 'event', 'ab-goal: ' + goalName, action, goalName) };
+          var boundAction = action;
+          var boundGoalName = goalName;
+          return function() { ga('send', 'event', 'ab-goal: ' + boundGoalName, boundAction, boundGoalName); };
         }(goalActions[i]));
       }
 
