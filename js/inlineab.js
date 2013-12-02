@@ -8,6 +8,7 @@
 // to Google Universal Analytics for analysis.
 //
 // The file is inserted directly after the opening <body> tag in the page's HTML.
+//
 
 (function(window) {
 
@@ -154,7 +155,7 @@
       var goal = abGoals[0];
       var goalName = goal.getAttribute('goal-name').trim();
       var goalTarget = goal.children[0];
-      var goalActions = goal.getAttribute('goal-action').split(',') || ['click'];
+      var goalActions = goal.getAttribute('goal-action') ? goal.getAttribute('goal-action').split(',') : ['click'];
 
       // clean extra spaces from string
       for (var i = 0; i < goalActions.length; i++) {
