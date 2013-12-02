@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/modernizr.js"></script>
+    <script src='js/inlineab.js'></script>
   </head>
 <body>
     <div class="row">
@@ -83,14 +84,20 @@
         <div class="large-3 small-6 columns">
           <div class='inner-thumbnail-container'>
             <img src="img/code-example.png" />
-            <h6 class="center panel">Write tests in HTML,<br> not in Javascript.</h6>
+            <abtest test-name='no-javascript-thumb-text'>
+              <h6 exp-name='shorter' class="center panel">Write tests in HTML,<br> not in Javascript.</h6>
+              <h6 exp-name='longer' class="center panel">Write all of your tests<br>without a line of Javascript.</h6>
+            </abtest>
           </div>
         </div>
  
         <div class="large-3 small-6 columns">
           <div class='inner-thumbnail-container'>
             <img src="img/performant.png" />
-            <h6 class="center panel">Lightning-fast pageloads.<br>Invisible substitutions.</h6>
+            <abtest test-name='performance-thumb-text'>
+              <h6 exp-name='lightning' class="center panel">Lightning-fast pageloads.<br>Invisible substitutions.</h6>
+              <h6 exp-name='Load-instantly' class="center panel">Load your pages instantly<br>and apply tests without flicker.</h6>
+            </abtest>
           </div>
         </div>
 
@@ -147,16 +154,20 @@
           <div class="large-4 columns">
  
           <h4 class='center'>Get Inline AB:</h4><br>
+          
+          <abgoal goal-name='download-basic'>
+            <a class="large button expand" href="download.html">
+              Personalized Version<br>
+              <span class='small-text'>We'll set up your script for you.<span>
+            </a>
+          </abgoal>
  
-          <a class="large button expand" href="download.html">
-            Personalized Version<br>
-            <span class='small-text'>We'll set up your script for you.<span>
-          </a>
- 
-          <a class="large button expand" href="downloads/inlineab.js">
-            Source Code<br>
-            <span class='small-text'>Fully annotated; requires additional setup.<span>
-          </a>
+          <abgoal goal-name='download-source'>
+            <a class="large button expand" href="js/inlineab.js">
+              Source Code<br>
+              <span class='small-text'>Fully annotated; requires additional setup.<span>
+            </a>
+          </abgoal>
  
  
         </div>
@@ -186,5 +197,15 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46140385-1', 'inlineab.com');
+    ga('send', 'pageview');
+
+  </script>
 </body>
 </html
