@@ -172,7 +172,7 @@
         addListener(goalTarget, goalActions[i], function(action){
           var boundAction = action;
           var boundGoalName = goalName;
-          return function() { ga('send', 'event', 'ab-goal: ' + boundGoalName, boundAction, boundGoalName); alert("You did it! " + boundGoalName); };
+          return function() { ga('send', 'event', 'ab-goal: ' + boundGoalName, boundAction, boundGoalName); };
         }(goalActions[i]));
       }
 
