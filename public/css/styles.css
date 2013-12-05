@@ -48,6 +48,17 @@ label {
   overflow: scroll;
 }
 
-.hidden {
-  display: none;
+.download-page-list {
+  padding: 3px;
+  list-style-type: none;
+  display: table;
+  cursor: pointer;
+}
+
+.download-page-list:hover {
+  color: #666;
+}
+
+.highlighted {
+  background-color: #EEE;
 }

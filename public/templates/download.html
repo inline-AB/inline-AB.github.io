@@ -1,29 +1,27 @@
 <br><br>
 <br>
-<div class="row setup-part-1">
+<div class="row">
   <div class='large-6 small-12 columns'>
-    <h2>Log In with Google Analytics: </h2>
+    <h5>Log In with Google Analytics: </h5>
   </div>
   <div class='large-6 small-12 columns'>
-    <button class='googleLogin'>Yay Google!</button>
+    <button ng-click='login()' class='googleLogin'>{{loginButtonText}}</button>
   </div>
 </div>
 
 <br><hr/><br>
 
-<div class='hidden row setup-part-2'>
-  <div class='large-6 small-12 columns account-selector'>
+<div ng-show='username' class='row'>
+  <div class='large-6 small-12 columns'>
     <h5>Select your account:</h5>
-    <ul class='accounts-list'>
-      <li>Account 1</li>
-      <li>Account 2</li>
+    <ul>
+      <li ng-repeat='account in accounts' class='download-page-list' ng-class="{highlighted : isSelectedAccount(account)}" ng-click='selectAccount(account)'>{{account}}<br></li>
     </ul>
   </div>
-  <div class-'large-6 small-12 columns web-property-selector'>
-    <h5></h5>
-    <ul class='web-properties-list'>
-      <li>Web Property 1</li>
-      <li>Web Property 2</li>
+  <div ng-show='account' class='large-6 small-12 columns'>
+    <h5>Select your web property:</h5>
+    <ul>
+      <li ng-repeat='webprop in webProps' class='download-page-list' ng-class="{highlighted : isSelectedWebProp(webprop)}" ng-click='selectWebProp(webprop)'>{{webprop}}<br></li>
     </ul>
   </div>
 </div>
