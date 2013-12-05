@@ -38,7 +38,7 @@
         <img class='loading-spinner' src='img/ajax-loader.gif' ng-show='loading.tests'/>
         <li ng-repeat='test in tests' class='download-page-test'>
           <span class='index'>{{$index + 1}}.</span>
-          <input type='text' value='{{test}}'></input>
+          <input autofocus type='text' value='{{test}}' ng-enter='addTest()'></input>
           <span class='deleteTest' ng-click='deleteTest(test)'>X</span>
         </li>
         <li ng-hide='loading.tests' class='download-page-test'><button class='tiny' ng-click='addTest()'>Add more</button></li>
@@ -49,37 +49,3 @@
     </div>
   </div>
 </div>
-<!--
-<div class="row">
-  <div class='large-12 columns'>
-    <div class="row">
-      <div class='large-6 small-12 columns'>
-        <h4>Custom Dimension Names: </h4>
-      </div>
-      <div class='large-6 small-12 columns'>
-        <em>These are the names of your custom dimensions in Google Analytics.  They will be matched up with your test names in the HTML file.</em>
-      </div>
-    </div>
-    <br><br>
-    <div class='customDimensions'>
-      <div class='row'>
-        <div class='large-4 small-10 columns'>
-          <div class='row dimension'>
-            <div class='small-6 columns'>Dimension 1:</div>
-            <input class='small-6 columns'/>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class='row'>
-      <div class='small-11 large-5 columns'>
-        <div class='row'>
-          <div class='small-6 small-centered columns'>
-            <button class='tiny addCustomDimension' onclick="addRow()">Add more</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
