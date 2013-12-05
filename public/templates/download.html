@@ -36,9 +36,12 @@
       <h5>Enter your tests:</h5>
       <ul>
         <img class='loading-spinner' src='img/ajax-loader.gif' ng-show='loading.tests'/>
-        <li ng-repeat='test in tests' class='download-page-list'>
-          <span>{{$index + 1}}</span><input type='text' value='{{test}}'></input>
+        <li ng-repeat='test in tests' class='download-page-test'>
+          <span class='index'>{{$index + 1}}.</span>
+          <input type='text' value='{{test}}'></input>
+          <span class='deleteTest' ng-click='deleteTest(test)'>X</span>
         </li>
+        <li ng-hide='loading.tests' class='download-page-test'><button class='tiny' ng-click='addTest()'>Add more</button></li>
       </ul>
     </div>
     <div class='large-6 small-12 columns'>

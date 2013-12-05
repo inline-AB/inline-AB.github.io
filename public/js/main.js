@@ -149,8 +149,22 @@ var app = angular.module('inlineAB', [])
       function(tests) {
         $scope.loading.tests = false;
         $scope.tests = tests;
+        setTimeout(function() {
+          window.scrollTo(0, 5000);
+        }, 20);
       }
     );
+  };
+
+  $scope.deleteTest = function(test) {
+    $scope.tests.splice($scope.tests.indexOf(test), 1);
+  };
+
+  $scope.addTest = function() {
+    $scope.tests.push("");
+    setTimeout(function() {
+      window.scrollTo(0, 5000);
+    }, 20);
   };
 
 })

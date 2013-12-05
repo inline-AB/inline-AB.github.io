@@ -59,16 +59,34 @@ label {
   color: #666;
 }
 
-.download-page-list span {
+.download-page-test {
+  list-style-type: none;
+  display: table;
+}
+
+.download-page-test .index {
   position: relative;
   top: 3px;
   font-size: 25px;
 }
 
-.download-page-list input {
+.download-page-test input {
   margin-left: 25px;
   display: inline-block;
   width: 250px;
+}
+
+.download-page-test .deleteTest {
+  position: relative;
+  top: 4px;
+  font-size: 19px;
+  color: #D00;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.download-page-test .deleteTest:hover {
+  color:#A00;
 }
 
 .highlighted {
