@@ -59,6 +59,28 @@ label {
   color: #666;
 }
 
+.download-page-list span {
+  position: relative;
+  top: 3px;
+  font-size: 25px;
+}
+
+.download-page-list input {
+  margin-left: 25px;
+  display: inline-block;
+  width: 250px;
+}
+
 .highlighted {
   background-color: #EEE;
+}
+
+.loading-spinner {
+  position: relative;
+  left: 35px;
+  top: 10px;
+}
+
+.download-customization {
+  min-height: 500px;
 }

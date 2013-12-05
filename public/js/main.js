@@ -19,7 +19,7 @@ var app = angular.module('inlineAB', [])
     $timeout(function() {
       service.username = name;
       d.resolve(name);
-    }, 500);
+    }, 200);
 
     return d.promise;
   };
@@ -31,7 +31,7 @@ var app = angular.module('inlineAB', [])
     $timeout(function() {
       service.username = undefined;
       d.resolve();
-    }, 500);
+    }, 200);
 
     return d.promise;
   };
@@ -42,7 +42,7 @@ var app = angular.module('inlineAB', [])
     // REPLACE WITH REAL ACCOUNT FETCHER
     $timeout(function() {
       d.resolve(["Personal Account", "Business Account", "H4CK3R 4CC0|_|N7"]);
-    }, 500);
+    }, 200);
 
     return d.promise;
   };
@@ -50,10 +50,21 @@ var app = angular.module('inlineAB', [])
   service.getWebProps = function(account) {
     var d = $q.defer();
 
-    // REPLACE WITH REAL WEB Prop FETCHER
+    // REPLACE WITH REAL WEB PROP FETCHER
     $timeout(function() {
       d.resolve(["DRUGS", "KIDNAPPINGS", "LAUNDERING"]);
-    }, 500);
+    }, 200);
+
+    return d.promise;
+  };
+
+  service.getTests = function(webProp) {
+    var d = $q.defer();
+
+    // REPLACE WITH REAL TEST FETCHER
+    $timeout(function() {
+      d.resolve(["Doge Vocabulary", "Bro-Quotient/Brotient", "Moral Fortitude", "Spline Reticulation"]);
+    }, 200);
 
     return d.promise;
   };
@@ -61,41 +72,40 @@ var app = angular.module('inlineAB', [])
   return service;
 })
 .controller('download', function($scope, google) {
-  $scope.loginButtonText = "Log In";
-
+  $scope.loading = {login: false};
   $scope.login = function() {
-    // Logging out.
-    if ($scope.username) {
-      google.logout().then(
-        function() {
-          $scope.username = undefined;
-          $scope.account = undefined;
-          $scope.accounts = undefined;
-          $scope.webProp = undefined;
-          $scope.webProps = undefined;
-          $scope.loginButtonText = "Log In";
-        },
-        function(error) {$scope.error = error;}
-      );
-      $scope.loginButtonText = "Logging Out...";
-    // Logging in.
-    } else {
-      google.login().then(
-        function(username) {
-          $scope.username = username;
-          $scope.loginButtonText = "Log Out";
-          getAccounts();
-        },
-        function(error) {$scope.error = error;}
-      );
-      $scope.loginButtonText = "Logging In...";
-    }
+    $scope.loading.login = true;
+    google.login().then(
+      function(username) {
+        $scope.loading.login = false;
+        $scope.username = username;
+        getAccounts();
+      },
+      function(error) {$scope.error = error;}
+    );
+  };
+
+  $scope.logout = function() {
+    $scope.loading.login = true;
+    google.logout().then(
+      function() {
+        $scope.loading.login = false;
+        $scope.username = undefined;
+        $scope.account = undefined;
+        $scope.accounts = undefined;
+        $scope.webProp = undefined;
+        $scope.webProps = undefined;
+      },
+      function(error) {$scope.error = error;}
+    );
   };
 
   // Get the google accounts.
   var getAccounts = function() {
+    $scope.loading.accounts = true;
     google.getAccounts().then(
       function(accounts) {
+        $scope.loading.accounts = false;
         $scope.accounts = accounts;
       }
     );
@@ -113,8 +123,10 @@ var app = angular.module('inlineAB', [])
 
   // Get the web properties for a specified account.
   var getWebProps = function(account) {
+    $scope.loading.webProps = true;
     google.getWebProps(account).then(
       function(webProps) {
+        $scope.loading.webProps = false;
         console.log("got web props");
         $scope.webProps = webProps;
       }
@@ -124,13 +136,22 @@ var app = angular.module('inlineAB', [])
   $scope.selectWebProp = function(webProp) {
     console.log("selected an WebProp");
     $scope.webProp = webProp;
+    getTests(webProp);
   };
 
   $scope.isSelectedWebProp = function(webProp) {
       return $scope.webProp === webProp;
   };
 
-
+  var getTests = function(webProp) {
+    $scope.loading.tests = true;
+    google.getTests(webProp).then(
+      function(tests) {
+        $scope.loading.tests = false;
+        $scope.tests = tests;
+      }
+    );
+  };
 
 })
 .controller('my-analytics', function() {
