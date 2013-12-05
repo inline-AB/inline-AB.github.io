@@ -1,13 +1,15 @@
 <!doctype html>
-<html>
+<html ng-app='inlineAB'>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>InlineAB | PAGE NAME HERE</title>
+    <title>InlineAB</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <script src='js/angular.js'></script>
     <script src="js/modernizr.js"></script>
     <script src='js/inlineab.js'></script>
+    <script src='js/main.js'></script>
   </head>
 <body>
     <div class="row">
@@ -19,7 +21,7 @@
           <!-- Title Area -->
           <li class="name">
             <h1>
-              <a href="index.html">
+              <a href="#">
                 Inline AB
               </a>
             </h1>
@@ -29,15 +31,11 @@
  
         <section class="top-bar-section">
           <ul class="right">
-            <abgoal goal-name='getting-started-click'>
-              <li><a href="getting-started.html">Getting Started</a></li>
-            </abgoal>
-            <li><a href="download.html">Download</a></li>
-            <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <abgoal goal-name='authors-click'>
-              <li><a href="authors.html">Authors</a></li>
-            </abgoal>
+            <li><a href="#/getting-started">Getting Started</a></li>
+            <li><a href="#/download">Download</a></li>
+            <li><a href="#/my-analytics">My Analytics</a></li>
+            <li><a href="#/documentation">Documentation</a></li>
+            <li><a href="#/authors">Authors</a></li>
           </ul>
         </section>
       </nav><hr class='moveup'/>
@@ -50,15 +48,8 @@
  
  
   <div class="row">
-    <div class="large-12 columns">
-      <div class="row">
- 
-    <!-- Content -->
- 
- 
-    <!-- End Content -->
- 
-      </div>
+    <div class="large-12 columns" ng-view>
+
     </div>
   </div>
  
